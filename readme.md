@@ -54,7 +54,7 @@ curl http://localhost:8080/<short_key>
 curl -X DELETE http://localhost:8080/<short_key>
 ```
 
-#### Running Tests
+### Running Tests
 
 Run tests using pytest:
 
@@ -62,6 +62,6 @@ Run tests using pytest:
 pytest tests/
 ```
 
-#### Acknowledgments
+## Acknowledgments
 
 Of course, this was inspired by John Crickett's Coding Challenges - https://codingchallenges.fyi/challenges/challenge-url-shortener
