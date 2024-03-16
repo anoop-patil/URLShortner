@@ -19,8 +19,7 @@ This URL Shortener is a simple web service that provides short aliases for redir
 
 1. Clone the repository:
     ```
-    git clone https://github.com/anoop-patil/url-shortener.git
-    cd url-shortener
+    https://github.com/anoop-patil/URLShortner.git
     ```
 
 2. Install the required packages:
