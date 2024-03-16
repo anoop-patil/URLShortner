@@ -43,5 +43,14 @@ def redirect_short_url(short_key):
     else:
         return "URL not found", 404
 
+
+@app.route('/<short_key>', methods=['DELETE'])
+def delete_short_url(short_key):
+    result = redis_client.delete(short_key)
+    if result == 1:
+        return '', 200
+    else:
+        return "URL not found", 404
+
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
