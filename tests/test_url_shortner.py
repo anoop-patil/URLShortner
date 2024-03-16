@@ -24,32 +24,25 @@ class TestURLShortening(TestCase):
         self.assertIn('http://localhost/', response.json['short_url'])
 
     def test_redirect_to_original_url(self):
-        # Setup: Create a shortened URL
         long_url = 'https://www.example.com'
         response = self.client.post('/', json={'url': long_url})
         short_key = response.json['key']
 
-        # Test: Access the shortened URL
         response = self.client.get(f'/{short_key}')
 
-        # Verify: The response should be a redirect to the original URL
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.location, long_url)
 
     def test_delete_shortened_url(self):
-        # Setup: Create a shortened URL
+
         long_url = 'https://www.example.com'
         response = self.client.post('/', json={'url': long_url})
         short_key = response.json['key']
 
-        # Test: Delete the shortened URL
         response = self.client.delete(f'/{short_key}')
 
-        # Verify: The response should be 200 OK
         self.assertEqual(response.status_code, 200)
 
-        # Test: Try to access the deleted URL
         response = self.client.get(f'/{short_key}')
 
-        # Verify: The response should be 404 Not Found
         self.assertEqual(response.status_code, 404)
